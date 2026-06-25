@@ -1,6 +1,9 @@
 from models.player import Player
 from models.economy import Economy
-
+from tools.economic_tools import (
+    invest,
+    learn_skill
+)
 
 def create_world():
 
@@ -60,6 +63,30 @@ def show_state(player, economy):
 if __name__ == "__main__":
 
     player, economy = create_world()
+
+    show_state(
+        player,
+        economy
+    )
+
+    print("\n=== TOOL TEST ===")
+
+
+    result = invest(
+        player,
+        10000
+    )
+
+    print(result)
+
+
+    result = learn_skill(
+        player,
+        "golang"
+    )
+
+    print(result)
+
 
     show_state(
         player,
