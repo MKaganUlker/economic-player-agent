@@ -4,6 +4,31 @@ from tools.economic_tools import (
     invest,
     learn_skill
 )
+from agent.react_agent import ReactAgent
+
+def get_state(player, economy):
+
+    return {
+
+        "cash": player.cash,
+
+        "salary": player.salary,
+
+        "expenses": player.expenses,
+
+        "investments": player.investments,
+
+        "debt": player.debt,
+
+        "skills": player.skills,
+
+        "inflation": economy.inflation,
+
+        "stock_return": economy.stock_return,
+
+        "goal": "maximize net worth"
+
+    }
 
 def create_world():
 
@@ -92,3 +117,21 @@ if __name__ == "__main__":
         player,
         economy
     )
+
+agent = ReactAgent()
+
+
+state = get_state(
+    player,
+    economy
+)
+
+
+decision = agent.decide(
+    state
+)
+
+
+print("\n=== AGENT DECISION ===")
+
+print(decision)
