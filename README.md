@@ -357,38 +357,38 @@ This creates a foundation for:
 
 ## Version 1
 
-[x] Economic world  
-[x] Player model  
-[x] Local LLM integration  
-[x] ReAct agent  
-[x] Tool execution  
-[x] Monthly simulation loop  
+* [x] Economic world  
+* [x] Player model  
+* [x] Local LLM integration  
+* [x] ReAct agent  
+* [x] Tool execution  
+* [x] Monthly simulation loop  
 
 
 ## Version 2
 
-[ ] Long-term memory improvement  
-[ ] Better capability system  
-[ ] More realistic economy  
-[ ] Market events  
-[ ] Risk evaluation  
+* [ ] Long-term memory improvement  
+* [ ] Better capability system  
+* [ ] More realistic economy  
+* [ ] Market events  
+* [ ] Risk evaluation  
 
 
 ## Version 3
 
-[ ] Planning agent  
-[ ] Strategy generation  
-[ ] Multi-step objectives  
-[ ] Self-evaluation  
+* [ ] Planning agent  
+* [ ] Strategy generation  
+* [ ] Multi-step objectives  
+* [ ] Self-evaluation  
 
 
 ## Version 4
 
-[ ] Verification agent  
-[ ] Self-correcting execution loop  
-[ ] Monte Carlo strategy evaluation  
-[ ] Multiple competing agents  
-[ ] Full simulated economy  
+* [ ] Verification agent  
+* [ ] Self-correcting execution loop  
+* [ ] Monte Carlo strategy evaluation  
+* [ ] Multiple competing agents  
+* [ ] Full simulated economy  
 
 
 ---
