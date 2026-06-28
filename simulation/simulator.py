@@ -4,28 +4,7 @@ import time
 
 from agent.react_agent import ReactAgent
 
-from tools.economic_tools import (
-    invest,
-    save_money,
-    learn_skill,
-    do_nothing
-)
-
-
-
-TOOLS = {
-
-    "invest": invest,
-
-    "save": save_money,
-
-    "learn_skill": learn_skill,
-
-    "do_nothing": do_nothing
-
-}
-
-
+from actions import TOOLS
 
 class Simulator:
 
