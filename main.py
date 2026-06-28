@@ -1,4 +1,5 @@
 import json
+import time
 
 
 from models.player import create_player
@@ -49,11 +50,29 @@ def execute_action(player, decision):
     tool = TOOLS[action]
 
 
-    return tool(
-        player,
-        **parameters
+    import inspect
+
+
+    allowed_parameters = (
+        inspect.signature(tool)
+        .parameters
     )
 
+
+    filtered_parameters = {
+
+        key: value
+
+        for key, value in parameters.items()
+
+        if key in allowed_parameters
+    }
+
+
+    return tool(
+        player,
+        **filtered_parameters
+    )
 
 
 def get_state(player, economy):
@@ -105,8 +124,6 @@ def show_state(player, economy):
 
 def main():
 
-    # Create world
-
     player = create_player()
 
     economy = create_economy()
@@ -118,12 +135,8 @@ def main():
     )
 
 
-    # Create agent
-
     agent = ReactAgent()
 
-
-    # Observe
 
     state = get_state(
         player,
@@ -131,10 +144,25 @@ def main():
     )
 
 
-    # Think
+    print("\n=== AGENT THINKING ===")
+
+
+    start_time = time.perf_counter()
+
 
     decision_text = agent.decide(
         state
+    )
+
+
+    end_time = time.perf_counter()
+
+
+    decision_time = end_time - start_time
+
+
+    print(
+        f"Decision time: {decision_time:.2f} seconds"
     )
 
 
@@ -143,8 +171,6 @@ def main():
     print(decision_text)
 
 
-
-    # Parse LLM output
 
     try:
 
@@ -163,7 +189,8 @@ def main():
 
 
 
-    # Act
+    print("\n=== EXECUTING ACTION ===")
+
 
     result = execute_action(
         player,
@@ -171,15 +198,11 @@ def main():
     )
 
 
-    print("\n=== ACTION RESULT ===")
-
     print(result)
 
 
-
-    # New state
-
     print("\n=== UPDATED WORLD ===")
+
 
     show_state(
         player,
