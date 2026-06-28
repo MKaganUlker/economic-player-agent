@@ -1,0 +1,112 @@
+# =========================
+# Python
+# =========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.so
+
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+
+*.egg-info/
+.installed.cfg
+*.egg
+
+pip-wheel-metadata/
+
+
+# =========================
+# Virtual Environment
+# =========================
+
+.venv/
+venv/
+env/
+ENV/
+
+
+# =========================
+# Environment Variables
+# =========================
+
+.env
+.env.*
+!.env.example
+
+
+# =========================
+# IDE
+# =========================
+
+.vscode/
+.idea/
+
+*.code-workspace
+
+
+# =========================
+# OS
+# =========================
+
+.DS_Store
+Thumbs.db
+
+
+# =========================
+# Logs
+# =========================
+
+*.log
+logs/
+
+
+# =========================
+# AI / LLM
+# =========================
+
+# Local model files
+models/*.gguf
+models/*.bin
+models/*.safetensors
+
+# Ollama local data
+.ollama/
+
+
+# =========================
+# Project Data
+# =========================
+
+data/
+datasets/
+outputs/
+results/
+
+*.jsonl
+*.csv
+
+
+# =========================
+# Simulation Artifacts
+# =========================
+
+checkpoints/
+runs/
+experiments/
+
+
+# =========================
+# Temporary Files
+# =========================
+
+*.tmp
+*.temp
+*.bak
