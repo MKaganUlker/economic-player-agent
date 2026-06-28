@@ -224,70 +224,46 @@ Most AI demos stop at:
 User -> LLM -> Answer
 ```
 
-This project focuses on:
+This project focuses on autonomous decision making by separating:
 
-```
-LLM
- |
-Reasoning
- |
-Action
- |
-Environment
- |
-Feedback
- |
-Memory
- |
-Improvement
-```
+* reasoning
+* environment
+* tool execution
+* simulation
 
-The goal is understanding how autonomous agents are built:
-
-* Reasoning
-* Tools
-* Memory
-* Feedback loops
-* Verification
+This makes the system deterministic, testable, and suitable for future multi-agent experiments.
 
 ---
 
-# Roadmap
+## Roadmap
 
-## Version 1 - Economic Agent
+### Version 1
 
 * [x] Economic world
 * [x] Player model
 * [x] Local LLM integration
 * [x] ReAct agent
 * [x] Tool execution
-* [x] Monthly simulation loop
 
-## Version 2 - Agent Improvement
+### Version 2
 
-* [x] Capability system
-* [x] Capability cost
-* [x] Capability cooldown
-* [x] Decision memory
+* [ ] Long-term memory
+* [ ] Monthly simulation loop
+* [ ] Dynamic economy
+* [ ] Investment returns
 
-* [ ] Reflection after actions
-* [ ] Outcome evaluation
-* [ ] Strategy memory
-
-## Version 3 - Advanced Agent Behavior
+### Version 3
 
 * [ ] Planning agent
+* [ ] Strategy generation
 * [ ] Multi-step objectives
-* [ ] Long-term strategy generation
-* [ ] Risk management
 
-## Version 4 - Self-Verifying Agent
+### Version 4
 
 * [ ] Verification agent
-* [ ] Self-correction loop
-* [ ] Failed action recovery
+* [ ] Self-correcting execution loop
 * [ ] Monte Carlo strategy evaluation
-* [ ] Multi-agent economic simulation
+* [ ] Parallel specialized agents
 
 ---
 
