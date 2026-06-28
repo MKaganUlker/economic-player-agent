@@ -212,7 +212,9 @@ Current world state:
 
 {json.dumps(state, indent=2)}
 
+Previous experiences:
 
+{json.dumps(state.get("memory", []), indent=2)}
 
 Analyze the situation.
 

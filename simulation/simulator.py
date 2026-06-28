@@ -51,7 +51,11 @@ class Simulator:
 
             "stock_return": self.economy.stock_return,
 
-            "unemployment": self.economy.unemployment
+            "unemployment": self.economy.unemployment,
+
+            "memory": self.player.memory[-5:],
+
+            "capabilities": self.player.capabilities,
 
         }
 
@@ -84,24 +88,6 @@ class Simulator:
         signature = inspect.signature(tool)
 
 
-        required_parameters = [
-            name
-            for name, param in signature.parameters.items()
-            if name != "player"
-            and param.default == inspect.Parameter.empty
-        ]
-
-
-        for required in required_parameters:
-
-            if required not in parameters:
-
-                return (
-                    f"Invalid action. "
-                    f"Missing parameter: {required}"
-                )
-
-
         filtered_parameters = {
 
             key: value
@@ -111,6 +97,38 @@ class Simulator:
             if key in signature.parameters
 
         }
+
+
+        if "month" in signature.parameters:
+
+            filtered_parameters["month"] = (
+                len(self.history) + 1
+            )
+
+
+        required_parameters = [
+
+            name
+
+            for name, param in signature.parameters.items()
+
+            if name != "player"
+
+            and name != "month"
+
+            and param.default == inspect.Parameter.empty
+
+        ]
+
+
+        for required in required_parameters:
+
+            if required not in filtered_parameters:
+
+                return (
+                    f"Invalid action. "
+                    f"Missing parameter: {required}"
+                )
 
 
         return tool(

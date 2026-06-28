@@ -17,6 +17,9 @@ class Player:
 
     capabilities: list[str] = field(default_factory=list)
 
+    capability_history: dict = field(default_factory=dict)
+
+    memory: list = field(default_factory=list)
 
     def net_worth(self):
 
