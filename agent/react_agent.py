@@ -1,12 +1,14 @@
-import ollama
 import json
+
+import ollama
+
+from config import Config
 
 
 class ReactAgent:
 
-    def __init__(self, model="qwen3.5:9b"):
-
-        self.model = model
+    def __init__(self):
+        self.model = Config.MODEL_NAME
 
 
     def create_prompt(self, state):
@@ -15,9 +17,9 @@ class ReactAgent:
 You are an autonomous economic player.
 
 Your goal:
-Maximize your net worth.
+{Config.GOAL}
 
-You can use these actions:
+You can perform these actions:
 
 1. invest
 2. save
@@ -25,21 +27,29 @@ You can use these actions:
 4. do_nothing
 
 
-Current state:
+Current world state:
 
 {json.dumps(state, indent=2)}
 
 
-Think about the best action.
+Analyze the situation.
 
-Return ONLY JSON:
+Choose the best action to maximize long-term results.
+
+Return ONLY valid JSON.
+
+Format:
 
 {{
-    "thought": "...",
-    "action": "...",
-    "parameters": {{}}
+    "thought": "short explanation",
+    "action": "action_name",
+    "parameters": {{
+        "key": "value"
+    }}
 }}
 
+Do not use markdown.
+Do not add extra text.
 """
 
 
@@ -49,17 +59,17 @@ Return ONLY JSON:
 
 
         response = ollama.chat(
-        model=self.model,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
+            model=self.model,
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            options={
+                "temperature": Config.TEMPERATURE
             }
-        ],
-        options={
-            "temperature": 0.2
-        }
-    )
+        )
 
 
         content = response["message"]["content"]

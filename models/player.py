@@ -1,8 +1,10 @@
 from dataclasses import dataclass, field
+from config import Config
 
 
 @dataclass
 class Player:
+
     cash: float
     salary: float
     expenses: float
@@ -10,15 +12,36 @@ class Player:
     debt: float
     skills: list[str] = field(default_factory=list)
 
-    def net_worth(self) -> float:
+
+    def net_worth(self):
+
         return (
             self.cash
             + self.investments
             - self.debt
         )
 
+
     def receive_salary(self):
+
         self.cash += self.salary
 
+
     def pay_expenses(self):
+
         self.cash -= self.expenses
+
+
+
+def create_player():
+
+    return Player(
+        cash=Config.INITIAL_CASH,
+        salary=Config.INITIAL_SALARY,
+        expenses=Config.INITIAL_EXPENSES,
+        investments=Config.INITIAL_INVESTMENTS,
+        debt=Config.INITIAL_DEBT,
+        skills=[
+            "python"
+        ]
+    )
