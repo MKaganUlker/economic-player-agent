@@ -190,7 +190,13 @@ class Simulator:
         self.history.append(
             record
         )
+        
+        self.player.monthly_update(
+            self.economy
+        )
 
+
+        self.economy.monthly_update()
 
         print(
             f"""

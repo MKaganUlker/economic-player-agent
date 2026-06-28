@@ -31,7 +31,31 @@ class Player:
 
         self.cash -= self.expenses
 
+    def monthly_update(
+        self,
+        economy
+    ):
 
+        # salary income
+
+        self.cash += (
+            self.salary / 12
+        )
+
+
+        # monthly expenses
+
+        self.cash -= (
+            self.expenses / 12
+        )
+
+
+        # investment growth
+
+        self.investments *= (
+            1 +
+            economy.stock_return / 12
+        )
 
 def create_player():
 
